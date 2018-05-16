@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.xiaomi {
+				width: 412px;
+				height: 500px;
+				overflow: hidden;
+				border: 1px solid #ddd;
+				margin: 100px auto;
+				position: relative;
+			}
+			.xiaomi span {
+				display: block;
+				width: 200%;
+				height: 250px;
+				position: absolute;
+				left: 0;
+				cursor: pointer;
+			}
+			#picup {
+				top: 0;
+			}
+			#picdown {
+				bottom: 0;
+			}
+			#pic {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function (){
+				function $(id){return document.getElementById(id);}//获取id
+				var num = 0;//计像素
+				var timer = null;//设置定时器
+				//当鼠标移动到上盒子，实现图片向上移动
+				$("picup").onmouseover = function(){
+					//打开计时器
+					timer = setInterval(function(){
+						num -= 3;//移动像素
+						
+						if(num >= -970)
+						{
+							 $("pic").style.top = num + "px" ;
+						}
+						else
+						{
+							clearInterval(timer);//1470-500=970;
+						}
+						
+					},30);
+				}
+				$("picdown").onmouseover = function(){
+					timer=setInterval(function(){
+						num+=3;
+						if(num <= 0)
+						{
+							$("pic").style.top = num +"px";
+						}
+						else
+						{
+							clearInterval(timer);
+						}
+					},30);
+				}
+				$("picup").parentNode.onmouseout = function(){
+					clearInterval(timer);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="xiaomi">
+			<img src="img/mi.png" id="pic"/><!--512px*1470px-->
+			<span id="picup"></span>
+			<span id="picdown"></span>
+		</div>
+	</body>
+</html>

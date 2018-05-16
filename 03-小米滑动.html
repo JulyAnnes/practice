@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.bigbox {
+				margin: 50px auto;
+				width: 512px;
+				height: 500px;
+				overflow: hidden;
+				position: relative;
+			}
+			.bigbox span {
+				display: block;
+				width: 100%;
+				height: 250px;
+				position: absolute;
+				left: 0;
+				cursor: pointer;
+			}
+			.uptop {
+				top: 0;
+			}
+			.downbotm {
+				bottom: 0;
+			}
+			#pic {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function (){
+				function $(id){ return document.getElementById(id);}//封装id
+				var num = 0 ; //定义计数变量
+				var timer = null;  //定义定时器
+				//当鼠标移动到盒子上方，实现图片向上滑动
+				$("up").onmouseover = function(){
+					timer=setInterval(function(){
+						num -= 3;//鼠标触发定时器打开，开始计数；
+						if(num >= -970)//图片向上移动的距离=图片的高-盒子的高 1470-500=970；
+					    {
+					    	$("pic").style.top = num+"px";//图片向上移动 num top值
+					    }
+					    else
+					    {
+					    	clearInterval(timer);//否则就清空定时器，图片不再移动
+					    }
+					},30);
+				}
+				$("bottom").onmouseover = function(){
+					timer=setInterval(function(){
+						num += 3;
+						if(num<0)
+						{
+							$("pic").style.top = num +"px";
+						}
+						else
+						{
+							clearInterval(timer);
+						}
+					},30);
+				}
+				$("up").parentNode.onmouseout = function() {
+                  clearInterval(timer);
+
+			}
+				}
+		</script>
+	</head>
+	<body>
+		<div class="bigbox">
+			<img src="img/mi.png" id="pic" /> <!--512px * 1470px-->
+			<span class="uptop" id="up"></span>
+			<span class="downbotm" id="bottom" ></span>
+		</div>
+	</body>
+</html>

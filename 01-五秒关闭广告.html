@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+			.close {
+				width: 300px;
+				height: 300px;
+				margin: 100px auto;
+				background-color: pink;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				function $(id) { return document.getElementById(id);}//定义一个获取id方法
+				
+				function hide(id){
+					$(id).style.display = "none";//将盒子隐藏
+				}
+				function show(id){
+					$(id).style.display = "block";//将盒子显示
+				}
+				setTimeout(closead,5000);//打开定时器 ，时间5秒，计时一次结束
+				function closead(){
+					hide("close");//调用隐藏函数，将盒子隐藏
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="close" id="close">
+			
+		</div>
+	</body>
+</html>

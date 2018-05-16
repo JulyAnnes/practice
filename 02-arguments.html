@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.demo {
+				width: 300px;
+				height: 200px;
+				background-color: skyblue;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var demo = document.getElementById("demo");//首先获取广告元素
+				var speed = 1000;//将时间设为1秒
+				var count = 5;//将总时间设为5秒
+				setTimeout(closead,speed);//打开定时器，一秒后结束
+				function closead(){
+					count--;
+					demo.innerHTML = "该广告将在"+count+"秒后自动跳转";//页面显示还有几秒关闭
+					if(count<=0)
+					{
+						window.location.href = "http://www.baidu.com";//5秒后，自动跳转
+					}
+					else
+					{
+						setTimeout(arguments.callee,speed);//时间没到5秒，则在执行一次定时器，直接获取正在执行的函数
+					}
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class="demo" id="demo">
+			
+		</div>
+	</body>
+</html>

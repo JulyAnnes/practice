@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var txt = "what are you 弄啥嘞";
+			function getstringlength(str){
+				var len = 0;//存储总长度
+				var c = 0;//存放每一个编码
+				for(var i=0;i<str.length;i++)
+				{
+					c=str.charCodeAt(i);
+					if(c>=0&&c<=127)
+					{
+						len++;
+					}
+					else
+					{
+						len+=2;
+					}
+				}
+				return len;
+			}
+			console.log(getstringlength(txt));
+		</script>
+	</body>
+</html>
